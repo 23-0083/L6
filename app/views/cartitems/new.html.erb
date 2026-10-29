@@ -1,0 +1,18 @@
+
+<h1>カートに追加</h1>
+
+<p>商品名：<%= @product.name %></p>
+<p>価格：<%= @product.price %>円</p>
+
+<%= form_with url: cartitems_path, method: :post do |f| %>
+  <%= hidden_field_tag :product_id, @product.id %>
+
+  <p>
+    <%= label_tag :qty, "数量" %>
+    <%= number_field_tag :qty, 1, min: 1 %>
+  </p>
+
+  <%= f.submit "カートに追加" %>
+<% end %>
+
+<%= link_to "商品一覧に戻る", products_path %>
